@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
                 editText.setVisibility(View.VISIBLE);
                 reset.setVisibility(View.GONE);
                 reset.setText("RETRY");
+                text.setText("");
                 text.setVisibility(View.VISIBLE);
             }
         });
@@ -68,7 +69,6 @@ public class MainActivity extends AppCompatActivity {
                     text.setText("Congrats Right Guess");
                     text.setTextColor(Color.GREEN);
                     findViewById(R.id.button).setEnabled(false);
-                    SystemClock.sleep(3000);
                 } else if (number - guess <= 2 & number - guess > 0) {
                     text.setText("You are a little behind");
                     text.setTextColor(Color.MAGENTA);
@@ -81,11 +81,17 @@ public class MainActivity extends AppCompatActivity {
                 }
                 editText.setText("");
                 lastGuess.setText(String.valueOf(guess));
-                if (choice == 0 | !(findViewById(R.id.button).isEnabled())) {
+                if(!(findViewById(R.id.button).isEnabled())){
+                    findViewById(R.id.button).setEnabled(true);
                     findViewById(R.id.button).setVisibility(View.GONE);
                     reset.setVisibility(View.VISIBLE);
-                    editText.setVisibility(View.GONE);
-                    text.setVisibility(View.GONE);
+                    editText.setVisibility(View.INVISIBLE);
+                }
+                if (choice == 0 ) {
+                    findViewById(R.id.button).setVisibility(View.GONE);
+                    reset.setVisibility(View.VISIBLE);
+                    editText.setVisibility(View.INVISIBLE);
+                    text.setVisibility(View.INVISIBLE);
                     text.setText("");
                 }
             }
