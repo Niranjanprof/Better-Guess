@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     private int guess;
     private int choice;
     private TextView text, lastGuess, numberOfGuess;
-    private Button reset;
+    private Button reset,button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         numberOfGuess = findViewById(R.id.textView7);
         reset = findViewById(R.id.reset);
         text = findViewById(R.id.textView4);
+        button =findViewById(R.id.button);
 
 
         reset.setOnClickListener(new View.OnClickListener() {
@@ -41,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
                 numberOfGuess.setText(String.valueOf(choice));
                 number = new Random().nextInt(20) + 1;
                 lastGuess.setText("---");
-                findViewById(R.id.button).setVisibility(View.VISIBLE);
+                button.setVisibility(View.VISIBLE);
                 editText.setVisibility(View.VISIBLE);
                 reset.setVisibility(View.GONE);
                 reset.setText("RETRY");
@@ -51,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 choice--;
@@ -68,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
                 } else if (number == guess) {
                     text.setText("Congrats Right Guess");
                     text.setTextColor(Color.GREEN);
-                    findViewById(R.id.button).setEnabled(false);
+                    button.setEnabled(false);
                 } else if (number - guess <= 2 & number - guess > 0) {
                     text.setText("You are a little behind");
                     text.setTextColor(Color.MAGENTA);
@@ -81,14 +82,14 @@ public class MainActivity extends AppCompatActivity {
                 }
                 editText.setText("");
                 lastGuess.setText(String.valueOf(guess));
-                if(!(findViewById(R.id.button).isEnabled())){
-                    findViewById(R.id.button).setEnabled(true);
-                    findViewById(R.id.button).setVisibility(View.GONE);
+                if(!(button.isEnabled())){
+                    button.setEnabled(true);
+                    button.setVisibility(View.GONE);
                     reset.setVisibility(View.VISIBLE);
                     editText.setVisibility(View.INVISIBLE);
                 }
                 if (choice == 0 ) {
-                    findViewById(R.id.button).setVisibility(View.GONE);
+                    button.setVisibility(View.GONE);
                     reset.setVisibility(View.VISIBLE);
                     editText.setVisibility(View.INVISIBLE);
                     text.setVisibility(View.INVISIBLE);
