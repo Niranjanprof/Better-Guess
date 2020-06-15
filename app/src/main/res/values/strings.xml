@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">HigherorLower</string>
+    <string name="last_guess">Last Guess:</string>
 </resources>
